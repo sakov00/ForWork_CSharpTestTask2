@@ -1,0 +1,75 @@
+﻿<Window x:Class="Sakov_Evgeni2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sakov_Evgeni2"
+        xmlns:viewmodels="clr-namespace:Sakov_Evgeni2.ViewModel"
+       mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400"
+        Background="Transparent">
+    <Window.Resources>
+        <viewmodels:MainWindowViewModel x:Key="MainWindowViewModel"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource MainWindowViewModel}"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Border Grid.RowSpan="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#000000" Offset="0.0"/>
+                        <GradientStop Color="#FF0000" Offset="0.5"/>
+                        <GradientStop Color="#DAA520" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+
+            <StackPanel VerticalAlignment="Center">
+                <Label x:Name="Info" Content="{Binding Path=Info, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Column="4" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Top" Height="30" Width="280" HorizontalContentAlignment="Center"/>
+            </StackPanel>
+
+
+
+            <StackPanel Grid.Row="1" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="Login"
+                        FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Text="{Binding LinkToVK}"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="70,0,0,0"/>
+
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+
+                <StackPanel Orientation="Horizontal" Margin="10,20,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                    <Button Width="110" Height="40" Content="INPUT" Margin="140,0,10,0" Command="{Binding Input_Click}" CommandParameter="{Binding Object}"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
